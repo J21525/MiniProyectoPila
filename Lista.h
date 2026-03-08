@@ -6,7 +6,6 @@ private:
 	int tamano;
 	int* arreglo;
 public:
-	Lista() {}
 	Lista(int longitud) {
 		tamano = longitud;
 		arreglo = new int[tamano];
@@ -15,7 +14,7 @@ public:
 		}
 	}
 	~Lista() {
-		delete arreglo;
+		delete[] arreglo;
 	}
 	int END() {
 		return tamano + 1;
@@ -25,20 +24,28 @@ public:
 			cout << "No se puede Insertar en la Lista" << endl;
 			return;
 		}
-		if (p == END()) {
+		if (p == END() || (1 >= p &&  p <= tamano)){
 			int* arreglo2 = new int[tamano + 1];
-			for (int i = 0; i < tamano; i++) {
-				arreglo2[i] = arreglo[i];
+			for (int i = 0; i < tamano+1; i++) {
+				if (1 >= p && p <= tamano) {
+					if (i < p - 1)
+						arreglo2[i] = arreglo[i];
+					else if (i == p - 1)
+						arreglo2[i] = x;
+					else
+						arreglo2[i] = arreglo[i - 1];
+				}
+				else
+					arreglo2[i] = arreglo[i];
 			}
-			arreglo2[p - 1] = x;
+			if (!(1 >= p && p <= tamano))
+				arreglo2[p - 1] = x;
 			delete[] arreglo;
 			arreglo = arreglo2;
 			tamano += 1;
-			cout << "Insertado Correctamente" << endl;
 			return;
 		}
 		arreglo[p - 1] = x;
-		cout << "Insertado Correctamente" << endl;
 		return;
 
 	}
@@ -48,7 +55,7 @@ public:
 				return i + 1;
 			}
 		}
-		return tamano;
+		return END();
 	}
 	int Recupera(int p) {
 		if (p <= 0 || p > tamano) {
@@ -71,8 +78,8 @@ public:
 			}
 		}
 		delete[] arreglo;
-		tamano -= 1;
 		arreglo = arreglo2;
+		tamano -= 1;
 	}
 	int Siguiente(int p) {
 		if (p == tamano)

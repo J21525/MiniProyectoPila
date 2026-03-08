@@ -11,7 +11,9 @@ public:
 		delete lista;
 	}
 	void push(int elemento) {
-		lista->Insertar(elemento, 1); //Hay que recordar que la lista que cree va de 1 hasta tamaño, y END es tamaño+1
+		lista->Insertar(1, elemento); //Hay que recordar que la lista que cree va de 1 hasta tamaño, y END es tamaño+1
+		//Debemos tomar en cuenta que debemos modificar un tanto la lista, ya que como el diseño anterior reemplazaba el dato si ingresaba uno nuevo
+		//Por lo que ahora deberé de moverlo también si ya existía, es decir hacer que entre en mi segunda condición de Insertar.
 		cout << "Elemento Insertado Correctamente" << endl;
 	}
 	void pop() {
@@ -38,5 +40,4 @@ public:
 		lista->Imprime(); //Simplificando el ejemplo de la Pila uso el imprimir normal de la lista dado que se procesa del primero elemento de la lista
 		// (último en entrar) hasta al final de la lista (primero en entrar).
 	}
-
 };
