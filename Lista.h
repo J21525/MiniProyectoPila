@@ -6,6 +6,7 @@ private:
 	int tamano;
 	int* arreglo;
 public:
+	Lista() {}
 	Lista(int longitud) {
 		tamano = longitud;
 		arreglo = new int[tamano];
@@ -102,11 +103,13 @@ public:
 			return 1;
 	}
 	void Imprime() {
-		cout << "Lista:  ";
 		for (int i = 0; i < tamano; i++) {
 			cout << arreglo[i] << "  ";
 		}
 		cout << endl;
+	}
+	void ImprimirElemento(int p) {
+		cout << arreglo[p-1] << " "; 
 	}
 	void Purge() {
 		for (int i = 0; Siguiente(i) != END(); i++) {
