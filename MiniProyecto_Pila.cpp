@@ -26,4 +26,8 @@ int main(){
     prueba->top();
     cout << "------> SOLICITANDO PILA (ORDEN DE LOS DATOS)..." << endl;
     prueba->ProcesarPila();
+    cout << "------> LIMPIANDO PILA..." << endl;
+    prueba->Anula();
+    cout << "------> SOLICITANDO PILA (ORDEN DE LOS DATOS)..." << endl;
+    prueba->ProcesarPila();
 }
